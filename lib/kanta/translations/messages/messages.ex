@@ -170,7 +170,7 @@ defmodule Kanta.Translations.Messages do
         Repo.get_repo().delete(from_message)
 
         # Invalidate cache
-        Kanta.Cache.delete_all!()
+        Kanta.Cache.clear_all!()
 
         # Return the target message
         to_message

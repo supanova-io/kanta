@@ -15,7 +15,7 @@ defmodule Kanta.Translations.PluralTranslations.Finders.GetPluralTranslation do
 
     with {:error, _, :not_cached} <- find_in_cache(cache_key),
          {:ok, %PluralTranslation{} = plural_translation} <- find_in_database(params) do
-      Cache.put!(cache_key, plural_translation)
+      Cache.fill!(cache_key, plural_translation)
 
       {:ok, plural_translation}
     else

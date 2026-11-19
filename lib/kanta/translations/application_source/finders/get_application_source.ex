@@ -15,7 +15,7 @@ defmodule Kanta.Translations.ApplicationSources.Finders.GetApplicationSource do
 
     with {:error, _, :not_cached} <- find_in_cache(cache_key),
          {:ok, %ApplicationSource{} = application_source} <- find_in_database(params) do
-      Cache.put!(cache_key, application_source)
+      Cache.fill!(cache_key, application_source)
 
       {:ok, application_source}
     else

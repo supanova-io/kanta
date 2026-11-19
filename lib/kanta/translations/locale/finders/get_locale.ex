@@ -15,7 +15,7 @@ defmodule Kanta.Translations.Locale.Finders.GetLocale do
 
     with {:error, _, :not_cached} <- find_in_cache(cache_key),
          {:ok, %Locale{} = locale} <- find_in_database(params) do
-      Cache.put!(cache_key, locale)
+      Cache.fill!(cache_key, locale)
 
       {:ok, locale}
     else
